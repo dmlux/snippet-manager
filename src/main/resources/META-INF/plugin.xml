@@ -1,18 +1,24 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.github.dmlux.snippetmanager</id>
-    <name>IntelliJ Platform Plugin snippet-manager</name>
+    <name>Snippet Manager</name>
     <vendor>dmlux</vendor>
 
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.dmlux.snippetmanager.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.dmlux.snippetmanager.services.MyProjectService"/>
+        <applicationService serviceImplementation="com.github.dmlux.snippetmanager.services.SnippetManagerApplicationService"/>
+        <projectService serviceImplementation="com.github.dmlux.snippetmanager.services.SnippetManagerService"/>
     </extensions>
 
     <applicationListeners>
-        <listener class="com.github.dmlux.snippetmanager.listeners.MyProjectManagerListener"
+        <listener class="com.github.dmlux.snippetmanager.listeners.SnippetManagerManagerListener"
                   topic="com.intellij.openapi.project.ProjectManagerListener"/>
     </applicationListeners>
+    <actions>
+        <action id="com.github.dmlux.snippetmanager.actions.PopuDialogAction" class="com.github.dmlux.snippetmanager.actions.PopuDialogAction"
+                text="Pop Dialog Action" description="SDK action example">
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+        </action>
+    </actions>
 </idea-plugin>
